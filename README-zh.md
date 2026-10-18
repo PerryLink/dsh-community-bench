@@ -1,6 +1,9 @@
 # dsh-community-bench
 
-**DeepSeek Harness 的应用内社区基准标签页。** 它读取公开的、按任务条件计算的 [DSH Community Bench](https://perrylink.github.io/dsh-attention-index/) registry，展示所有人看到的同一份分数。它**不在本地算分**。
+**DeepSeek Harness 的应用内社区基准标签页，面向 `dsh-score` 公共证据层。** 它读取公开的 [dsh-score](https://perrylink.github.io/dsh-attention-index/) registry，展示所有人看到的同一份证据。它**不在本地算分**。
+
+> **状态：参考消费者 / 维护模式。** 不再新增评分或排名功能。公共证据层是
+> `dsh-score-index`（当前为 `dsh-attention-index`；repo 改名待执行）。
 
 [![npm](https://img.shields.io/npm/v/dsh-community-bench)](https://www.npmjs.com/package/dsh-community-bench)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)

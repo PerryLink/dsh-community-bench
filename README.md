@@ -1,6 +1,10 @@
 # dsh-community-bench
 
-**In-app Community Bench tab for DeepSeek Harness.** It reads the public, task-conditioned [DSH Community Bench](https://perrylink.github.io/dsh-attention-index/) registry and shows the same score everyone sees. It does **not** compute a per-user score.
+**In-app Community Bench tab for the `dsh-score` public evidence layer.** It reads the public [dsh-score](https://perrylink.github.io/dsh-attention-index/) registry and shows the same evidence everyone sees. It does **not** compute a per-user score.
+
+> **Status: reference consumer / maintenance mode.** No new scoring or ranking
+> features. The public evidence layer is `dsh-score-index` (currently
+> `dsh-attention-index`; repo rename pending).
 
 [![npm](https://img.shields.io/npm/v/dsh-community-bench)](https://www.npmjs.com/package/dsh-community-bench)
 [![npm downloads](https://img.shields.io/npm/dm/dsh-community-bench)](https://www.npmjs.com/package/dsh-community-bench)
