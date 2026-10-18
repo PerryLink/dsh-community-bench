@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.5 — 2026-10-18
+
+- Refresh snapshot to the 30-result network-isolated pilot.
+- No client behavior change.
+
 ## 0.2.4 — 2026-10-18
 
 - Render E2 provisional and unrated candidate rows; never show a rank for them.
