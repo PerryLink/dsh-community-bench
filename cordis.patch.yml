@@ -1,0 +1,5 @@
+# dsh-community-bench bundle: a Settings → Plugins tab that reads the public
+# DSH Community Bench registry. No local score, no telemetry, no writes.
+- insert:
+    - id: community-bench
+      name: dsh-community-bench
