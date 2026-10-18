@@ -23,9 +23,9 @@ dsh plugin --profile web add dsh-community-bench
 
 ---
 
-<img src="docs/assets/dsh-score-hero.png" width="100%" alt="dsh-score public evidence: E0 unrated, E2 provisional, no quality #1" />
+<img src="https://raw.githubusercontent.com/PerryLink/dsh-community-bench/main/docs/assets/dsh-score-hero.png" width="100%" alt="dsh-score public evidence: E0 unrated, E2 provisional, no quality #1" />
 
-<img src="docs/assets/dsh-score-demo.gif" width="100%" alt="Animated dsh-score demo" />
+<img src="https://raw.githubusercontent.com/PerryLink/dsh-community-bench/main/docs/assets/dsh-score-demo.gif" width="100%" alt="Animated dsh-score demo" />
 
 > **Status: reference consumer / maintenance mode.** No new scoring or ranking
 > features. The public evidence layer is `dsh-score-index` (currently

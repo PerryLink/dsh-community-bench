@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.3 — 2026-10-18
+
+- Use absolute raw URLs for README images so npm renders them.
+
 ## 0.2.2 — 2026-10-18
 
 - Family-style README with hero image and animated demo.

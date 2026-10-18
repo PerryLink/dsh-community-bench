@@ -1,6 +1,6 @@
 {
   "name": "dsh-community-bench",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "In-app Community Bench tab for the dsh-score public evidence layer: reads the public registry and shows GOE/unrated evidence. No local scoring.",
   "private": false,
   "type": "module",

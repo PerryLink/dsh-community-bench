@@ -22,9 +22,9 @@ dsh plugin --profile web add dsh-community-bench
 
 ---
 
-<img src="docs/assets/dsh-score-hero.png" width="100%" alt="dsh-score 公共证据：E0 未评级、E2 暂定、没有质量 #1" />
+<img src="https://raw.githubusercontent.com/PerryLink/dsh-community-bench/main/docs/assets/dsh-score-hero.png" width="100%" alt="dsh-score 公共证据：E0 未评级、E2 暂定、没有质量 #1" />
 
-<img src="docs/assets/dsh-score-demo.gif" width="100%" alt="dsh-score 动图" />
+<img src="https://raw.githubusercontent.com/PerryLink/dsh-community-bench/main/docs/assets/dsh-score-demo.gif" width="100%" alt="dsh-score 动图" />
 
 > **状态：参考消费者 / 维护模式。** 不再新增评分或排名功能。公共证据层是
 > `dsh-score-index`（当前为 `dsh-attention-index`；repo 改名待执行）。
