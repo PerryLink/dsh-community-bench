@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2 — 2026-10-18
+
+- Family-style README with hero image and animated demo.
+- Add `docs/assets` to the package so npm renders the README images.
+- No scoring or client behavior change.
+
 ## 0.2.1 — 2026-10-18
 
 - Snapshot the first signed E2 pilot: 41 E0/unrated + 1 E2 provisional null.
