@@ -17,7 +17,9 @@
     "cordis.patch.yml",
     "locale",
     "icon.svg",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
   ],
   "dsh": {
     "manifestVersion": 1,
@@ -33,10 +35,28 @@
       ]
     }
   },
-  "keywords": ["dsh", "dsh-plugin", "deepseek-harness", "community-bench", "leaderboard"],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "community-bench",
+    "leaderboard"
+  ],
   "engines": {
     "node": "^22.19.0 || >=24.0.0",
     "dsh": ">=0.2.1-0 <0.3.0"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PerryLink/dsh-community-bench.git"
+  },
+  "homepage": "https://github.com/PerryLink/dsh-community-bench#readme",
+  "bugs": {
+    "url": "https://github.com/PerryLink/dsh-community-bench/issues"
+  },
+  "author": "PerryLink",
+  "publishConfig": {
+    "access": "public"
+  }
 }
