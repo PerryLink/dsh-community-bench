@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1 — 2026-10-18
+
+- Snapshot the first signed E2 pilot: 41 E0/unrated + 1 E2 provisional null.
+- Clarify that "no positive measured" is different from "no measured at all".
+- No local scoring and no prior-only #1.
+
 ## 0.2.0 — 2026-10-18
 
 - Brand the consumer as part of `dsh-score`.

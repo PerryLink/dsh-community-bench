@@ -13,7 +13,7 @@
 
 ## 展示什么
 
-- 每个能力面的 GOE（`E0`–`E5`）。v0.2 里所有行都是 `E0 / unrated`。
+- 每个能力面的 GOE（`E0`–`E5`）。0.2.1 里 41 行是 `E0 / unrated`，1 行是 `E2 / provisional`（零效应 pilot）；没有 positive measured 行。
 - 只有 positive measured 进入质量块；先验行是明确标注的候选，永远不是 `#1`。
 - prior、bench、覆盖率和**证据完整度**（不是置信概率）。
 - 社区注意力席位和贡献者声誉。

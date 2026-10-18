@@ -15,7 +15,7 @@
 
 ## What it shows
 
-- GOE (`E0`–`E5`) per surface. At v0.2 every row is `E0 / unrated`.
+- GOE (`E0`–`E5`) per surface. At 0.2.1: 41 rows are `E0 / unrated`, 1 row is `E2 / provisional` (a null pilot); no positive measured row.
 - Positive measured rows only in the quality block; prior-only rows are labelled candidates, never `#1`.
 - Prior, bench, coverage and **evidence completeness** (not a confidence probability).
 - Community attention blocks and contributor reputation.
