@@ -23,6 +23,11 @@ window.__ModuleLoader__.load({
       prior: 'prior',
       measured: 'measured',
       unrated: 'unrated',
+      provisional: 'provisional',
+      positive: 'positive measured',
+      provisionalNote: 'Provisional — no quality rank. The task pack is unreviewed or the sandbox is partial.',
+      candidates: 'Candidates · unrated',
+      candidatesNote: 'No outcome evidence. Unnumbered; not a quality rank.',
       bench: 'bench',
       coverage: 'coverage',
       confidence: 'evidence completeness',
@@ -49,6 +54,11 @@ window.__ModuleLoader__.load({
       prior: '先验',
       measured: '实测',
       unrated: '未评级',
+      provisional: '暂定',
+      positive: 'positive measured',
+      provisionalNote: '暂定 —— 没有质量排名。任务包未 review 或 sandbox 只是部分隔离。',
+      candidates: '候选 · 未评级',
+      candidatesNote: '没有 outcome evidence。无编号，不是质量排名。',
       bench: '实测分',
       coverage: '覆盖',
       confidence: '证据完整度',
@@ -63,10 +73,16 @@ window.__ModuleLoader__.load({
     }
 
     function normalizeRegistry(input) {
-      const surfaces = Array.isArray(input?.surfaces) ? input.surfaces.map(surface => ({
+      if (!input || !Array.isArray(input.surfaces) || input.surfaces.length === 0) {
+        throw new Error('registry has no surfaces')
+      }
+      const surfaces = input.surfaces.map(surface => ({
         ...surface,
-        top3: Array.isArray(surface.top3) ? surface.top3 : (Array.isArray(surface.leaderboard) ? surface.leaderboard.slice(0, 3) : []),
-      })) : []
+        leaderboard: Array.isArray(surface.leaderboard) ? surface.leaderboard : [],
+        top3: Array.isArray(surface.top3)
+          ? surface.top3.filter(row => row?.goe?.positive === true && /^E[3-5]$/.test(row?.evidenceGrade))
+          : [],
+      }))
       return { ...input, surfaces }
     }
 
@@ -97,18 +113,43 @@ window.__ModuleLoader__.load({
       small: { fontSize: '11px', fontWeight: 500, color: 'var(--dsw-alias-label-secondary)' },
       meta: { color: 'var(--dsw-alias-label-secondary)', fontSize: '11px', lineHeight: '17px' },
       link: { color: 'var(--dsw-alias-brand-primary)', textDecoration: 'none', fontSize: '11px' },
+      sections: { display: 'flex', flexDirection: 'column', gap: '8px' },
       contributors: { display: 'flex', flexDirection: 'column', gap: '4px' },
       contributor: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', padding: '6px 8px', border: '1px solid var(--dsw-alias-border-l3)', borderRadius: '6px', fontSize: '12px' },
     }
 
+    function scoreOf(row) {
+      if (row?.unrated === true || row?.evidenceGrade === 'E0') return 'E0 · unrated'
+      if (row?.evidenceGrade === 'E2' || row?.goe?.positive === false) return 'E2 · provisional'
+      const scale = row.scoreScale ?? (row.tier === 'measured' ? 100 : 60)
+      return `${Number(row.score ?? 0).toFixed(1)}/${scale}`
+    }
+
+    function chipText(row, t) {
+      if (row?.unrated === true || row?.evidenceGrade === 'E0') return t('unrated')
+      if (row?.evidenceGrade === 'E2' || row?.goe?.positive === false) return t('provisional')
+      return t('measured')
+    }
+
     function formatPct(value) {
+      if (value === null || value === undefined || Number.isNaN(Number(value))) return '—'
       return `${Math.round((Number(value) || 0) * 100)}%`
     }
 
-    function scoreOf(row) {
-      if (row?.unrated === true || row?.evidenceGrade === 'E0') return 'E0 · unrated'
-      const scale = row.scoreScale ?? (row.tier === 'measured' ? 100 : 60)
-      return `${Number(row.score ?? 0).toFixed(1)}/${scale}`
+    function rowCard(row, t) {
+      const positive = row?.goe?.positive === true && /^E[3-5]$/.test(row?.evidenceGrade)
+      return h('div', { key: row.pluginId, style: styles.card },
+        h('div', { style: styles.cardTop },
+          h('span', { style: styles.rank }, positive && row.rank !== null && row.rank !== undefined ? `#${row.rank}` : '—'),
+          h('span', { style: positive ? styles.chipMeasured : styles.chip }, chipText(row, t)),
+        ),
+        h('div', { style: styles.name, title: row.name }, row.name),
+        h('div', { style: styles.author }, row.author),
+        h('div', { style: styles.score }, scoreOf(row)),
+        h('div', { style: styles.meta }, `GOE ${row.evidenceGrade ?? 'E0'} · ${t('prior')} ${Number(row.prior ?? 0).toFixed(1)} · ${t('bench')} ${row.bench === null || row.bench === undefined ? '—' : Number(row.bench).toFixed(1)}`),
+        h('div', { style: styles.meta }, `${t('coverage')} ${formatPct(row.coverage)} · ${t('confidence')} ${formatPct(row.confidence)}`),
+        h('a', { style: styles.link, href: row.repo, target: '_blank', rel: 'noreferrer' }, 'repo ↗'),
+      )
     }
 
     function CommunityBenchTab(props) {
@@ -139,8 +180,14 @@ window.__ModuleLoader__.load({
       React.useEffect(() => { void refresh() }, [refresh])
 
       const surface = data.surfaces.find(item => item.id === surfaceId) ?? data.surfaces[0]
-      const measured = surface?.top3?.filter(row => row.tier === 'measured').length ?? 0
+      const leaderboard = surface?.leaderboard ?? []
+      const top = surface?.top3 ?? []
+      const provisional = leaderboard.filter(row => row.evidenceGrade === 'E2' || (row.tier === 'measured' && row.goe?.positive === false)).slice(0, 3)
+      const candidates = leaderboard.filter(row => row.unrated === true).slice(0, 3)
       const measuredTotal = data.stats?.measuredPlugins ?? 0
+      const positiveTotal = data.stats?.positiveMeasured ?? 0
+      const unratedTotal = data.stats?.unratedPlugins ?? Math.max(0, (data.stats?.plugins ?? 0) - measuredTotal)
+      const hasRows = top.length > 0 || provisional.length > 0 || candidates.length > 0
 
       return h('div', { 'data-dsh-community-bench': '', style: styles.root },
         h('div', { style: styles.header },
@@ -157,8 +204,8 @@ window.__ModuleLoader__.load({
         h('div', { style: styles.stats },
           h('div', { style: styles.stat }, h('div', { style: styles.statValue }, String(data.stats?.plugins ?? 0)), h('div', { style: styles.statLabel }, 'plugins')),
           h('div', { style: styles.stat }, h('div', { style: styles.statValue }, String(measuredTotal)), h('div', { style: styles.statLabel }, t('measured'))),
-          h('div', { style: styles.stat }, h('div', { style: styles.statValue }, String(data.stats?.unratedPlugins ?? Math.max(0, (data.stats?.plugins ?? 0) - measuredTotal))), h('div', { style: styles.statLabel }, t('unrated'))),
-          h('div', { style: styles.stat }, h('div', { style: styles.statValue }, String(data.stats?.surfaces ?? 0)), h('div', { style: styles.statLabel }, t('surface'))),
+          h('div', { style: styles.stat }, h('div', { style: styles.statValue }, String(positiveTotal)), h('div', { style: styles.statLabel }, t('positive'))),
+          h('div', { style: styles.stat }, h('div', { style: styles.statValue }, String(unratedTotal)), h('div', { style: styles.statLabel }, t('unrated'))),
         ),
         h('div', { style: styles.tabs }, (data.surfaces ?? []).map(item => h('button', {
           key: item.id,
@@ -168,20 +215,23 @@ window.__ModuleLoader__.load({
         }, item.zh ?? item.label ?? item.id))),
         h('p', { style: styles.note }, `${t('note')} ${surface?.note ?? ''}`),
         error.length > 0 ? h('p', { style: { ...styles.note, color: 'var(--dsw-alias-label-secondary)' } }, `${t('error')} (${error})`) : null,
-        (surface?.top3 ?? []).length === 0
-          ? h('p', { style: styles.note }, t('noMeasured'))
-          : h('div', { style: styles.cards }, (surface?.top3 ?? []).map(row => h('div', { key: row.pluginId, style: styles.card },
-              h('div', { style: styles.cardTop },
-                h('span', { style: styles.rank }, row.rank === null || row.rank === undefined ? '—' : `#${row.rank}`),
-                h('span', { style: row.unrated ? styles.chip : styles.chipMeasured }, row.unrated ? t('unrated') : t('measured')),
-              ),
-              h('div', { style: styles.name, title: row.name }, row.name),
-              h('div', { style: styles.author }, row.author),
-              h('div', { style: styles.score }, scoreOf(row), h('span', { style: styles.small }, ` ${t('score')}`)),
-              h('div', { style: styles.meta }, `GOE ${row.evidenceGrade ?? 'E0'} · ${t('prior')} ${Number(row.prior ?? 0).toFixed(1)} · ${t('bench')} ${row.bench === null || row.bench === undefined ? '—' : Number(row.bench).toFixed(1)}`),
-              h('div', { style: styles.meta }, `${t('coverage')} ${formatPct(row.coverage)} · ${t('confidence')} ${formatPct(row.confidence)}`),
-              h('a', { style: styles.link, href: row.repo, target: '_blank', rel: 'noreferrer' }, 'repo ↗'),
-            ))),
+        h('div', { style: styles.sections },
+          top.length > 0 ? h('div', { key: 'positive' },
+            h('div', { style: styles.subtitle }, t('measured')),
+            h('div', { style: styles.cards }, top.map(row => rowCard(row, t))),
+          ) : null,
+          provisional.length > 0 ? h('div', { key: 'provisional' },
+            h('div', { style: styles.subtitle }, t('provisional')),
+            h('p', { style: styles.note }, t('provisionalNote')),
+            h('div', { style: styles.cards }, provisional.map(row => rowCard(row, t))),
+          ) : null,
+          candidates.length > 0 ? h('div', { key: 'candidates' },
+            h('div', { style: styles.subtitle }, t('candidates')),
+            h('p', { style: styles.note }, t('candidatesNote')),
+            h('div', { style: styles.cards }, candidates.map(row => rowCard(row, t))),
+          ) : null,
+          hasRows ? null : h('p', { style: styles.note }, t('noMeasured')),
+        ),
         h('div', null,
           h('div', { style: { ...styles.subtitle, marginBottom: '6px' } }, t('contributors')),
           (data.contributors ?? []).length === 0
@@ -198,15 +248,13 @@ window.__ModuleLoader__.load({
     function apply(ctx) {
       ctx.effect(() => ctx.locale.register(NS, { en, zh }), 'dsh-community-bench: dictionaries')
       const t = ctx.locale.bind(NS)
-      ctx.inject(['slots'], (scope) => {
-        scope.effect(() => scope.slots.register({
-          name: 'settings.plugins.tab',
-          id: 'community-bench',
-          order: 40,
-          label: () => t('tab'),
-          locale: NS,
-        }, CommunityBenchTab), 'dsh-community-bench: settings tab')
-      })
+      ctx.effect(() => ctx.slots.inject('settings.plugins.tab', () => ctx.slots.register({
+        name: 'settings.plugins.tab',
+        id: 'community-bench',
+        order: 40,
+        label: () => t('tab'),
+        locale: NS,
+      }, CommunityBenchTab)), 'dsh-community-bench: settings tab')
     }
 
     return { name: 'dsh-community-bench', inject: ['slots', 'locale'], NS, apply }

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.4 — 2026-10-18
+
+- Render E2 provisional and unrated candidate rows; never show a rank for them.
+- Refresh snapshot to the 30-result sandboxed pilot.
+- Fix slot registration, package exports, icon metadata and inject edges.
+
 ## 0.2.3 — 2026-10-18
 
 - Use absolute raw URLs for README images so npm renders them.

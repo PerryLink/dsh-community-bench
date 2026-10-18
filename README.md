@@ -9,7 +9,6 @@
 [![npm](https://img.shields.io/npm/v/dsh-community-bench)](https://www.npmjs.com/package/dsh-community-bench)
 [![npm downloads](https://img.shields.io/npm/dm/dsh-community-bench)](https://www.npmjs.com/package/dsh-community-bench)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Gitee](https://img.shields.io/badge/Gitee-mirror-c71d23?logo=gitee)](https://gitee.com/perrylink/dsh-community-bench)
 [![GitCode](https://img.shields.io/badge/GitCode-mirror-2f6feb)](https://gitcode.com/PerryLink/dsh-community-bench)
 [![DSH plugin](https://img.shields.io/badge/dsh--plugin-✅-green)](https://github.com/topics/dsh-plugin)
 
@@ -33,7 +32,7 @@ dsh plugin --profile web add dsh-community-bench
 
 ## What it shows
 
-- GOE (`E0`–`E5`) per surface. At 0.2.1: 41 rows are `E0 / unrated`, 1 row is `E2 / provisional` (a null pilot); no positive measured row.
+- GOE (`E0`–`E5`) per surface. At the current snapshot: 41 rows are `E0 / unrated`, 1 row is `E2 / provisional` (a null pilot); no positive measured row.
 - Positive measured rows only in the quality block; prior-only rows are labelled candidates, never `#1`.
 - Prior, bench, coverage and **evidence completeness** (not a confidence probability).
 - Community attention blocks and contributor reputation.

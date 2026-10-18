@@ -1,6 +1,6 @@
 {
   "name": "dsh-community-bench",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "In-app Community Bench tab for the dsh-score public evidence layer: reads the public registry and shows GOE/unrated evidence. No local scoring.",
   "private": false,
   "type": "module",
@@ -8,6 +8,8 @@
   "exports": {
     ".": "./index.js",
     "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
     "./package.json": "./package.json"
   },
   "files": [
@@ -23,6 +25,7 @@
     "README-zh.md",
     "docs/assets"
   ],
+  "icon": "./icon.svg",
   "dsh": {
     "manifestVersion": 1,
     "bundle": {
@@ -30,9 +33,9 @@
     },
     "client": {
       "platform": "web",
-      "immediately": true,
       "inject": [
         "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-ui-settings-plugins",
         "@deepseek-ai/dsh-client-locale"
       ]
     }

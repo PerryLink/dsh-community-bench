@@ -8,7 +8,6 @@
 
 [![npm](https://img.shields.io/npm/v/dsh-community-bench)](https://www.npmjs.com/package/dsh-community-bench)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![Gitee](https://img.shields.io/badge/Gitee-mirror-c71d23?logo=gitee)](https://gitee.com/perrylink/dsh-community-bench)
 [![GitCode](https://img.shields.io/badge/GitCode-mirror-2f6feb)](https://gitcode.com/PerryLink/dsh-community-bench)
 [![DSH plugin](https://img.shields.io/badge/dsh--plugin-✅-green)](https://github.com/topics/dsh-plugin)
 
@@ -31,7 +30,7 @@ dsh plugin --profile web add dsh-community-bench
 
 ## 展示什么
 
-- 每个能力面的 GOE（`E0`–`E5`）。0.2.1 里 41 行是 `E0 / unrated`，1 行是 `E2 / provisional`（零效应 pilot）；没有 positive measured 行。
+- 每个能力面的 GOE（`E0`–`E5`）。当前快照里 41 行是 `E0 / unrated`，1 行是 `E2 / provisional`（零效应 pilot）；没有 positive measured 行。
 - 只有 positive measured 进入质量块；先验行是明确标注的候选，永远不是 `#1`。
 - prior、bench、覆盖率和**证据完整度**（不是置信概率）。
 - 社区注意力席位和贡献者声誉。
