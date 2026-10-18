@@ -1,6 +1,11 @@
 # dsh-community-bench
 
-**In-app Community Bench tab for DeepSeek Harness.** It reads the public, task-conditioned [DSH Community Bench](https://github.com/PerryLink/dsh-attention-index) registry and shows the same score everyone sees. It does **not** compute a per-user score.
+**In-app Community Bench tab for DeepSeek Harness.** It reads the public, task-conditioned [DSH Community Bench](https://perrylink.github.io/dsh-attention-index/) registry and shows the same score everyone sees. It does **not** compute a per-user score.
+
+[![npm](https://img.shields.io/npm/v/dsh-community-bench)](https://www.npmjs.com/package/dsh-community-bench)
+[![npm downloads](https://img.shields.io/npm/dm/dsh-community-bench)](https://www.npmjs.com/package/dsh-community-bench)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
+[![DSH plugin](https://img.shields.io/badge/dsh--plugin-✅-green)](https://github.com/topics/dsh-plugin)
 
 ## What it shows
 
@@ -14,7 +19,7 @@ The tab is a **consumer**: measurement and allocation live in the public registr
 ## Install
 
 ```sh
-dsh plugin --profile web add /home/yy/community-bench-plugin
+dsh plugin --profile web add dsh-community-bench
 ```
 
 Then open **Settings → Plugins → Community Bench**.
@@ -28,7 +33,7 @@ The build injects two URLs (`scripts/build.mjs`):
 | `BENCH_SITE_URL` | `https://perrylink.github.io/dsh-attention-index/` |
 | `BENCH_REGISTRY_URL` | `https://raw.githubusercontent.com/PerryLink/dsh-attention-index/main/data/registry.json` |
 
-If the repository is hosted elsewhere, rebuild with those variables.
+If the registry is hosted elsewhere, rebuild with those variables.
 
 ## Limits
 

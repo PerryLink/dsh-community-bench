@@ -19,7 +19,8 @@
     "icon.svg",
     "README.md",
     "CHANGELOG.md",
-    "LICENSE"
+    "LICENSE",
+    "README-zh.md"
   ],
   "dsh": {
     "manifestVersion": 1,
