@@ -15,12 +15,13 @@
 
 ## What it shows
 
-- Top 3 per capability surface (memory, vision, Office, browser, orchestration, safety, MCP, remote, dev, voice, research, UI, desktop).
-- Public score / 100 (measured) or / 60 (prior-only), with the tier, prior, bench, coverage and confidence.
+- GOE (`E0`–`E5`) per surface. At v0.2 every row is `E0 / unrated`.
+- Positive measured rows only in the quality block; prior-only rows are labelled candidates, never `#1`.
+- Prior, bench, coverage and **evidence completeness** (not a confidence probability).
 - Community attention blocks and contributor reputation.
-- Link to the public leaderboard and a refresh button.
+- Link to the public evidence site and a refresh button.
 
-The tab is a **consumer**: measurement and allocation live in the public registry, not in this plugin. If the live registry is unreachable, it falls back to the bundled snapshot and labels it.
+The tab is a **consumer**: evidence and grading live in the public registry, not in this plugin. If the live registry is unreachable, it falls back to the bundled snapshot and labels it.
 
 ## Install
 

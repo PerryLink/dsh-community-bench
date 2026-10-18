@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0 — 2026-10-18
+
+- Brand the consumer as part of `dsh-score`.
+- Show GOE (`E0`–`E5`) and `unrated`; no prior-only `#1` or quality rank.
+- If a surface has no positive measured result, render "No measured evidence yet" instead of prior cards.
+- Relabel confidence as evidence completeness; show the discovery score separately.
+
 ## 0.1.1 — 2026-10-18
 
 - npm-first install docs and live registry links.

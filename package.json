@@ -1,7 +1,7 @@
 {
   "name": "dsh-community-bench",
-  "version": "0.1.1",
-  "description": "In-app Community Bench tab for DeepSeek Harness: reads the public, task-conditioned registry and shows the same score everyone sees. No local scoring.",
+  "version": "0.2.0",
+  "description": "In-app Community Bench tab for the dsh-score public evidence layer: reads the public registry and shows GOE/unrated evidence. No local scoring.",
   "private": false,
   "type": "module",
   "main": "./index.js",
