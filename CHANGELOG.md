@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.6 — 2026-10-31
+
+- Docs: mark the package FROZEN in maintenance mode; no code change.
+
 ## 0.2.5 — 2026-10-18
 
 - Refresh snapshot to the 30-result network-isolated pilot.
