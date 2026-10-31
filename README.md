@@ -2,6 +2,13 @@
 
 # 🧪 dsh-community-bench
 
+> 🧊 **FROZEN — 2026-10-31. Maintenance mode.** No new scoring or ranking features; the package stays installable.
+
+## Maintenance status: 🧊 FROZEN
+
+Frozen on 2026-10-31 in maintenance mode. The public evidence layer lives in `dsh-attention-index`; this bench remains a reference consumer.
+
+
 **In-app Community Bench tab for the `dsh-score` public evidence layer.**
 
 *Reads the same public registry everyone sees. No local scoring, no telemetry, no paid rank.*

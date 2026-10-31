@@ -2,6 +2,12 @@
 
 # 🧪 dsh-community-bench
 
+> 🧊 **2026-10-31 起冻结，维护模式。** 不再新增评分/排名功能；包仍可安装。
+
+## 维护状态：🧊 已冻结
+
+2026-10-31 起进入维护模式。公共证据层在 `dsh-attention-index`；本 bench 保留为参考消费端。
+
 **DeepSeek Harness 的应用内社区基准标签页，面向 `dsh-score` 公共证据层。**
 
 *读取所有人看到的同一份公共 registry。不在本地算分，不上报 telemetry，不卖排名。*
