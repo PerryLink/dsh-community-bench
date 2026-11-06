@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="660" viewBox="0 0 1100 660" role="img" aria-labelledby="fig-title">
+<title id="fig-title">dsh-community-bench — two sources, one gate, three evidence tiers</title>
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f9f6fd"/><stop offset="1" stop-color="#e4eaf8"/></linearGradient>
+<filter id="soft" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#2a3a6a" flood-opacity="0.14"/></filter>
+<marker id="arr-acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#4B67B4"/></marker>
+<marker id="arr-amb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#b45309"/></marker>
+<marker id="arr-fnt" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#8a93a8"/></marker>
+</defs>
+<rect width="1100" height="660" fill="url(#bg)"/>
+<text x="48" y="52" font-size="22" fill="#1b2233" font-family="'Microsoft YaHei','Segoe UI',sans-serif" font-weight="700">Two sources → one gate → three evidence tiers</text>
+<text x="1052" y="52" font-size="13" fill="#8a93a8" font-family="'Consolas','Cascadia Mono',monospace" text-anchor="end">dsh-community-bench · v0.2.6</text>
+<text x="48" y="80" font-size="13" fill="#5a6275" font-family="'Microsoft YaHei','Segoe UI',sans-serif">The tab renders the public registry and never scores. Only a positive E3–E5 row may hold a quality slot.</text>
+<text x="48" y="112" font-size="12" fill="#8a93a8" font-family="'Consolas','Cascadia Mono',monospace" font-weight="700" letter-spacing="1">SOURCES · 2 LANES</text>
+<rect x="48" y="122" width="292" height="168" rx="18" fill="#ffffff" stroke="#d9e0ef" stroke-width="1" filter="url(#soft)"/>
+<text x="68" y="150" font-size="14" fill="#4B67B4" font-family="'Consolas','Cascadia Mono',monospace" font-weight="700">BUNDLED SNAPSHOT</text>
+<text x="68" y="172" font-size="13" fill="#2b3347" font-family="'Consolas','Cascadia Mono',monospace">snapshot.json</text>
+<text x="68" y="193" font-size="12" fill="#5a6275" font-family="'Microsoft YaHei','Segoe UI',sans-serif">injected at build:</text>
+<text x="68" y="210" font-size="12" fill="#5a6275" font-family="'Consolas','Cascadia Mono',monospace">scripts/build.mjs</text>
+<text x="68" y="234" font-size="13" fill="#2b3347" font-family="'Microsoft YaHei','Segoe UI',sans-serif">42 plugins · 15 surfaces</text>
+<text x="68" y="253" font-size="13" fill="#2b3347" font-family="'Microsoft YaHei','Segoe UI',sans-serif">E0 41 · E2 1 · 0 positive</text>
+<circle cx="72" cy="270" r="4" fill="#15803d"/>
+<text x="84" y="274" font-size="12" fill="#15803d" font-family="'Microsoft YaHei','Segoe UI',sans-serif">always available</text>
+<rect x="48" y="332" width="292" height="104" rx="18" fill="#ffffff" stroke="#d9e0ef" stroke-width="1" filter="url(#soft)"/>
+<text x="68" y="358" font-size="14" fill="#4B67B4" font-family="'Consolas','Cascadia Mono',monospace" font-weight="700">LIVE REGISTRY</text>
+<text x="68" y="380" font-size="13" fill="#2b3347" font-family="'Consolas','Cascadia Mono',monospace">BENCH_REGISTRY_URL</text>
+<text x="68" y="400" font-size="13" fill="#5a6275" font-family="'Consolas','Cascadia Mono',monospace">fetch(url, { cache: 'no-store' })</text>
+<circle cx="72" cy="416" r="4" fill="#b45309"/>
+<text x="84" y="420" font-size="12" fill="#b45309" font-family="'Microsoft YaHei','Segoe UI',sans-serif">outbound HTTPS · may fail</text>
+<path d="M62 326V296" stroke="#b45309" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#arr-amb)"/>
+<text x="78" y="318" font-size="12" fill="#b45309" font-family="'Microsoft YaHei','Segoe UI',sans-serif">fetch fails → keep snapshot</text>
+<text x="48" y="458" font-size="11.5" fill="#8a93a8" font-family="'Consolas','Cascadia Mono',monospace">mount → refresh(); first paint = snapshot</text>
+<path d="M340 200H380" stroke="#4B67B4" stroke-width="2" marker-end="url(#arr-acc)"/>
+<path d="M340 384C362 384 366 278 380 278" stroke="#4B67B4" stroke-width="2" fill="none" marker-end="url(#arr-acc)"/>
+<rect x="384" y="122" width="304" height="178" rx="18" fill="#ffffff" stroke="#d9e0ef" stroke-width="1" filter="url(#soft)"/>
+<text x="404" y="150" font-size="16" fill="#4B67B4" font-family="'Consolas','Cascadia Mono',monospace" font-weight="700">normalizeRegistry()</text>
+<text x="404" y="176" font-size="13" fill="#2b3347" font-family="'Consolas','Cascadia Mono',monospace">surfaces[] non-empty or throw</text>
+<text x="404" y="198" font-size="13" fill="#2b3347" font-family="'Consolas','Cascadia Mono',monospace">leaderboard → [] if absent</text>
+<text x="404" y="220" font-size="13" fill="#2b3347" font-family="'Consolas','Cascadia Mono',monospace">top3 = positive &amp;&amp; E3–E5</text>
+<path d="M404 238H668" stroke="#d9e0ef" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="404" y="258" font-size="12" fill="#5a6275" font-family="'Microsoft YaHei','Segoe UI',sans-serif">same gate for both lanes</text>
+<text x="404" y="282" font-size="12" fill="#4B67B4" font-family="'Consolas','Cascadia Mono',monospace">→ normalized registry</text>
+<rect x="384" y="318" width="304" height="118" rx="18" fill="#ffffff" stroke="#d9e0ef" stroke-width="1" filter="url(#soft)"/>
+<text x="404" y="344" font-size="14" fill="#4B67B4" font-family="'Consolas','Cascadia Mono',monospace" font-weight="700">STATE · SOURCE LABEL</text>
+<text x="404" y="368" font-size="13" fill="#2b3347" font-family="'Consolas','Cascadia Mono',monospace">status = 'snapshot' | 'live'</text>
+<text x="404" y="390" font-size="13" fill="#2b3347" font-family="'Consolas','Cascadia Mono',monospace">refresh() ok → live · fail → snapshot</text>
+<text x="404" y="412" font-size="12" fill="#5a6275" font-family="'Microsoft YaHei','Segoe UI',sans-serif">busy · error string · toolbar chip</text>
+<text x="728" y="112" font-size="12" fill="#8a93a8" font-family="'Consolas','Cascadia Mono',monospace" font-weight="700" letter-spacing="0.8">RENDER · THREE EVIDENCE BLOCKS</text>
+<path d="M688 211H708M708 172V392" stroke="#4B67B4" stroke-width="2" fill="none"/>
+<path d="M708 172H724" stroke="#4B67B4" stroke-width="2" marker-end="url(#arr-acc)"/>
+<path d="M708 282H724" stroke="#4B67B4" stroke-width="2" marker-end="url(#arr-acc)"/>
+<path d="M708 392H724" stroke="#4B67B4" stroke-width="2" marker-end="url(#arr-acc)"/>
+<rect x="728" y="122" width="324" height="100" rx="18" fill="#ffffff" stroke="#d9e0ef" stroke-width="1" filter="url(#soft)"/>
+<circle cx="750" cy="142" r="4" fill="#4B67B4"/>
+<text x="762" y="147" font-size="13.5" fill="#4B67B4" font-family="'Consolas','Cascadia Mono',monospace" font-weight="700">MEASURED · E3–E5</text>
+<text x="1032" y="153" font-size="24" fill="#4B67B4" font-family="'Consolas','Cascadia Mono',monospace" font-weight="700" text-anchor="end">0</text>
+<text x="748" y="174" font-size="13" fill="#2b3347" font-family="'Consolas','Cascadia Mono',monospace">goe.positive = true (top3 gate)</text>
+<text x="748" y="196" font-size="13" fill="#2b3347" font-family="'Microsoft YaHei','Segoe UI',sans-serif">the only block where #rank appears</text>
+<text x="748" y="214" font-size="11.5" fill="#8a93a8" font-family="'Microsoft YaHei','Segoe UI',sans-serif">0 rows in this snapshot</text>
+<rect x="728" y="232" width="324" height="100" rx="18" fill="#ffffff" stroke="#d9e0ef" stroke-width="1" filter="url(#soft)"/>
+<circle cx="750" cy="252" r="4" fill="#b45309"/>
+<text x="762" y="257" font-size="13.5" fill="#b45309" font-family="'Consolas','Cascadia Mono',monospace" font-weight="700">PROVISIONAL · E2</text>
+<text x="1032" y="263" font-size="24" fill="#b45309" font-family="'Consolas','Cascadia Mono',monospace" font-weight="700" text-anchor="end">1</text>
+<text x="748" y="284" font-size="13" fill="#2b3347" font-family="'Consolas','Cascadia Mono',monospace">E2 or goe.positive = false</text>
+<text x="748" y="306" font-size="13" fill="#2b3347" font-family="'Microsoft YaHei','Segoe UI',sans-serif">no quality rank · task unreviewed</text>
+<text x="748" y="324" font-size="11.5" fill="#8a93a8" font-family="'Microsoft YaHei','Segoe UI',sans-serif">max 3 cards · never #1</text>
+<rect x="728" y="342" width="324" height="100" rx="18" fill="#ffffff" stroke="#d9e0ef" stroke-width="1" filter="url(#soft)"/>
+<circle cx="750" cy="362" r="4" fill="#5a6275"/>
+<text x="762" y="367" font-size="13.5" fill="#5a6275" font-family="'Consolas','Cascadia Mono',monospace" font-weight="700">CANDIDATES · E0</text>
+<text x="1032" y="373" font-size="24" fill="#5a6275" font-family="'Consolas','Cascadia Mono',monospace" font-weight="700" text-anchor="end">41</text>
+<text x="748" y="394" font-size="13" fill="#2b3347" font-family="'Consolas','Cascadia Mono',monospace">unrated = true</text>
+<text x="748" y="416" font-size="13" fill="#2b3347" font-family="'Microsoft YaHei','Segoe UI',sans-serif">no outcome evidence · unnumbered</text>
+<text x="748" y="434" font-size="11.5" fill="#8a93a8" font-family="'Microsoft YaHei','Segoe UI',sans-serif">max 3 cards · prior-only</text>
+<path d="M48 470H1052" stroke="#d9e0ef" stroke-width="1.2" stroke-dasharray="7 6"/>
+<text x="48" y="494" font-size="12" fill="#8a93a8" font-family="'Consolas','Cascadia Mono',monospace" font-weight="700" letter-spacing="0.8">THIS PLUGIN · READ-ONLY CONSUMER</text>
+<text x="568" y="494" font-size="12" fill="#8a93a8" font-family="'Consolas','Cascadia Mono',monospace" font-weight="700" letter-spacing="0.8">UPSTREAM · SCORING AUTHORITY</text>
+<rect x="48" y="504" width="120.0" height="30" rx="10" fill="#f4f7fd" stroke="#d9e0ef" stroke-width="1"/><text x="108.0" y="523.68" font-size="13" fill="#2b3347" font-family="'Consolas','Cascadia Mono',monospace" text-anchor="middle">no local score</text>
+<rect x="176.0" y="504" width="106.0" height="30" rx="10" fill="#f4f7fd" stroke="#d9e0ef" stroke-width="1"/><text x="229.0" y="523.68" font-size="13" fill="#2b3347" font-family="'Consolas','Cascadia Mono',monospace" text-anchor="middle">no telemetry</text>
+<rect x="290.0" y="504" width="85.0" height="30" rx="10" fill="#f4f7fd" stroke="#d9e0ef" stroke-width="1"/><text x="332.5" y="523.68" font-size="13" fill="#2b3347" font-family="'Consolas','Cascadia Mono',monospace" text-anchor="middle">no writes</text>
+<rect x="383.0" y="504" width="78.0" height="30" rx="10" fill="#f4f7fd" stroke="#d9e0ef" stroke-width="1"/><text x="422.0" y="523.68" font-size="13" fill="#2b3347" font-family="'Consolas','Cascadia Mono',monospace" text-anchor="middle">no tools</text>
+<text x="48" y="558" font-size="11.5" fill="#8a93a8" font-family="'Consolas','Cascadia Mono',monospace">registers settings.plugins.tab · id community-bench</text>
+<text x="568" y="520" font-size="13" fill="#2b3347" font-family="'Consolas','Cascadia Mono',monospace">0.55 bench · 0.30 prior · 0.10 coverage · 0.05 community</text>
+<text x="568" y="541" font-size="12" fill="#5a6275" font-family="'Microsoft YaHei','Segoe UI',sans-serif">prior-only cap 60 · minSamples 3 · grades E0–E5</text>
+<text x="568" y="562" font-size="12" fill="#5a6275" font-family="'Microsoft YaHei','Segoe UI',sans-serif">snapshot = cache, not a second scoring path</text>
+<path d="M540 484V568" stroke="#d9e0ef" stroke-width="1.2" stroke-dasharray="6 6"/>
+<text x="48" y="620" font-size="11.5" fill="#8a93a8" font-family="'Consolas','Cascadia Mono',monospace">one client module · host apply() registers nothing</text>
+<text x="1052" y="620" font-size="11.5" fill="#8a93a8" font-family="'Consolas','Cascadia Mono',monospace" text-anchor="end">snapshot 2026-10-18 · dsh-attention/registry/v1</text>
+</svg>

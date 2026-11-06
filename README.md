@@ -1,5 +1,10 @@
 <div align="center">
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-community-bench-hero-en-dark.webp">
+  <img src="docs/assets/dsh-community-bench-hero-en-light.webp" width="100%" alt="dsh-community-bench banner: a read-only Community Bench over one public registry — 42 plugin rows, 41 E0 unrated, 1 E2 provisional, 0 positive measured">
+</picture>
+
 # dsh-community-bench
 
 **In-app Community Bench tab for the dsh-score public evidence layer.**
@@ -53,10 +58,6 @@ dsh plugin --profile web add dsh-community-bench
 
 ---
 
-<img src="https://raw.githubusercontent.com/PerryLink/dsh-community-bench/main/docs/assets/dsh-score-hero.png" width="100%" alt="dsh-score public evidence: E0 unrated, E2 provisional, no quality #1" />
-
-<img src="https://raw.githubusercontent.com/PerryLink/dsh-community-bench/main/docs/assets/dsh-score-demo.gif" width="100%" alt="Animated dsh-score demo" />
-
 > **Status: reference consumer / maintenance mode.** No new scoring or ranking
 > features. The public evidence layer is `dsh-score-index` (currently
 > `dsh-attention-index`; repo rename pending).
@@ -70,6 +71,15 @@ dsh plugin --profile web add dsh-community-bench
 - Link to the public evidence site and a refresh button.
 
 The tab is a **consumer**: evidence and grading live in the public registry, not in this plugin. If the live registry is unreachable, it falls back to the bundled snapshot and labels it.
+
+<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-community-bench-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-community-bench-flow-v5-light.svg" width="100%" alt="Structure: the build-injected snapshot and the live registry lane converge on normalizeRegistry(), which keeps top3 only for positive E3–E5 rows; the render path then splits into measured, provisional and unrated candidate blocks, a failed fetch keeps the snapshot, and the scoring weights stay upstream">
+</picture>
+
+</div>
 
 ## Install
 
