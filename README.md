@@ -9,7 +9,7 @@
 
 **In-app Community Bench tab for the dsh-score public evidence layer.**
 
-Reads the same public registry everyone sees. No local scoring, no telemetry, no paid rank.
+*Reads the same public registry everyone sees. No local scoring, no telemetry, no paid rank.*
 
 [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
 
@@ -33,29 +33,6 @@ dsh plugin --profile <name> add dsh-community-bench
 
 <sub>Community plugin, not affiliated with DeepSeek. Canonical repository: <https://github.com/PerryLink/dsh-community-bench> (Gitee is a mirror).</sub>
 
-## Maintenance status: 🧊 FROZEN
-
-Frozen on 2026-10-31 in maintenance mode. The public evidence layer lives in `dsh-attention-index`; this bench remains a reference consumer.
-
-
-**In-app Community Bench tab for the `dsh-score` public evidence layer.**
-
-*Reads the same public registry everyone sees. No local scoring, no telemetry, no paid rank.*
-
-[![npm](https://img.shields.io/npm/v/dsh-community-bench)](https://www.npmjs.com/package/dsh-community-bench)
-[![npm downloads](https://img.shields.io/npm/dm/dsh-community-bench)](https://www.npmjs.com/package/dsh-community-bench)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](LICENSE)
-[![GitCode](https://img.shields.io/badge/GitCode-mirror-2f6feb)](https://gitcode.com/PerryLink/dsh-community-bench)
-[![DSH plugin](https://img.shields.io/badge/dsh--plugin-✅-green)](https://github.com/topics/dsh-plugin)
-
-[English](README.md) · [简体中文](README-zh.md)
-
-```sh
-dsh plugin --profile web add dsh-community-bench
-```
-
-</div>
-
 ---
 
 > **Status: reference consumer / maintenance mode.** No new scoring or ranking
@@ -72,14 +49,12 @@ dsh plugin --profile web add dsh-community-bench
 
 The tab is a **consumer**: evidence and grading live in the public registry, not in this plugin. If the live registry is unreachable, it falls back to the bundled snapshot and labels it.
 
-<div align="center">
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-community-bench-flow-v5-dark.svg">
-  <img src="docs/assets/dsh-community-bench-flow-v5-light.svg" width="100%" alt="Structure: the build-injected snapshot and the live registry lane converge on normalizeRegistry(), which keeps top3 only for positive E3–E5 rows; the render path then splits into measured, provisional and unrated candidate blocks, a failed fetch keeps the snapshot, and the scoring weights stay upstream">
+  <img src="docs/assets/dsh-community-bench-flow-v5-light.svg" width="100%" alt="dsh-community-bench structure: the build-injected snapshot and the live registry lane converge on normalizeRegistry(), which keeps top3 only for positive E3–E5 rows; the render path then splits into measured, provisional and unrated candidate blocks, a failed fetch keeps the snapshot, and the scoring weights stay upstream">
 </picture>
 
-</div>
+*Structure: two lanes (build-injected snapshot and live registry) → one `normalizeRegistry()` gate → three evidence blocks; only a positive E3–E5 row can hold a quality slot, a failed fetch keeps the snapshot, and the scoring weights stay upstream. The token labels inside the diagram are real identifiers, so the same picture serves all five languages.*
 
 ## Install
 
@@ -105,6 +80,12 @@ If the registry is hosted elsewhere, rebuild with those variables.
 - The bundled snapshot is generated from `dsh-attention-index/data/registry.json`; it is a cache, not a second scoring path.
 - The live fetch depends on the host allowing outbound HTTPS from the Web app; on failure the tab stays on the snapshot.
 - No local writes, no telemetry, no tools.
+
+## Evaluation
+
+![dsh-community-bench build and package check: a real run of `node scripts/build.mjs` writing the 89,600-byte client bundle, then `npm pack --dry-run` listing the README, the hero/flow media and the recorded demo gif in the published package](docs/assets/dsh-community-bench-demo.gif)
+
+*Animated: the repository's own build step and a package dry-run, re-run 2026-11-21. The tab is a client-only view with no CLI, so this is the run: the bundled snapshot is injected into `client.js` and the docs media travel with the npm package. No network and no UI capture are involved.*
 
 ## DSH plugin family
 
